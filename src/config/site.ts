@@ -29,7 +29,8 @@ export const SITE = {
   name: 'Melega',
   legalName: 'Melega, S.L.',
   tagline: 'Montajes Eléctricos Gaditanos',
-  url: import.meta.env.SITE_URL ?? 'https://melega.vercel.app',
+  // Single source of truth: `site` in astro.config.mjs.
+  url: import.meta.env.SITE,
   phones: {
     primary: phone('956 547 899'),
     secondary: phone('661 606 065'),

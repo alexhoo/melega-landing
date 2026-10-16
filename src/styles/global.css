@@ -27,12 +27,17 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 5rem;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
   body {
-    @apply bg-melega-night pb-20 md:pb-0 font-sans text-melega-ink antialiased;
+    @apply bg-melega-night font-sans text-melega-ink antialiased;
     -webkit-tap-highlight-color: transparent;
   }
 }

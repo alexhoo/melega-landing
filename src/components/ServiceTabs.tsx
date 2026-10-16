@@ -1,4 +1,4 @@
-import { useId, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import {
   Cctv,
   CircuitBoard,
@@ -44,6 +44,9 @@ export default function ServiceTabs({ groups, defaultGroup = 'empresa' }: Props)
   const [active, setActive] = useState<Audience>(defaultGroup);
   const tabRefs = useRef<Partial<Record<Audience, HTMLButtonElement | null>>>({});
   const id = useId();
+  // Until hydration both panels stay visible (and the tablist hidden) so the content works without JS.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
   function select(next: Audience) {
     setActive(next);
@@ -68,6 +71,7 @@ export default function ServiceTabs({ groups, defaultGroup = 'empresa' }: Props)
     <div>
       <div
         role="tablist"
+        hidden={!hydrated}
         aria-label="Tipo de cliente"
         className="inline-flex flex-wrap gap-1 rounded-full border border-transparent bg-white p-1 shadow-[0_0_0_1px_rgb(0_0_0/0.06),0_1px_2px_rgb(0_0_0/0.06)]"
       >
@@ -105,9 +109,10 @@ export default function ServiceTabs({ groups, defaultGroup = 'empresa' }: Props)
           role="tabpanel"
           id={`${id}-panel-${audience}`}
           aria-labelledby={`${id}-tab-${audience}`}
-          hidden={audience !== active}
+          hidden={hydrated && audience !== active}
           className="mt-8"
         >
+          {!hydrated && <h3 className="mb-4 text-xl font-bold text-melega-ink">{groups[audience].label}</h3>}
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {groups[audience].items.map((service) => {
               const Icon = ICONS[service.icon];

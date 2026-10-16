@@ -38,3 +38,11 @@ test('tabs work after hydration', async ({ page }) => {
   await page.getByRole('tab', { name: 'Hogar y comercio' }).click();
   await expect(page.getByText('Instalaciones fotovoltaicas')).toBeVisible();
 });
+
+test('no stray colour band below the footer on mobile', async ({ page }, info) => {
+  test.skip(info.project.name !== 'mobile', 'mobile only');
+  await page.goto('/');
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  const gap = await page.evaluate(() => window.innerHeight - document.querySelector('footer')!.getBoundingClientRect().bottom);
+  expect(gap).toBeLessThanOrEqual(1);
+});

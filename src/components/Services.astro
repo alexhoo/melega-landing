@@ -19,7 +19,7 @@ import { services } from '../data/services';
       <CallLink location="services" variant="outline" class="text-melega-dark">Pide presupuesto</CallLink>
     </div>
     <div class="mt-10">
-      <ServiceTabs client:visible groups={services} />
+      <ServiceTabs client:idle groups={services} />
     </div>
   </div>
 </section>
