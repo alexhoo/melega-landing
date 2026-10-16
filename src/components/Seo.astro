@@ -1,0 +1,50 @@
+---
+import { getImage } from 'astro:assets';
+import { SITE } from '../config/site';
+import heroPhoto from '../assets/stock/hero-electricista.jpg';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Adds the LocalBusiness structured data (home page only). */
+  localBusiness?: boolean;
+}
+
+const { title, description, localBusiness = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = await getImage({ src: heroPhoto, width: 1200, height: 630, format: 'jpg' });
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Electrician',
+  name: SITE.legalName,
+  alternateName: SITE.tagline,
+  url: SITE.url,
+  telephone: SITE.phones.primary.href.replace('tel:', ''),
+  foundingDate: '2007',
+  areaServed: 'Provincia de Cádiz',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.region,
+    postalCode: SITE.address.postalCode,
+    addressCountry: 'ES',
+  },
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{!SITE.indexable && <meta name="robots" content="noindex, nofollow" />}
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={new URL(ogImage.src, SITE.url).href} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#0c2a1a" />
+{localBusiness && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

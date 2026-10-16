@@ -3,17 +3,24 @@ import Logo from '../assets/brand/melega-logo-on-dark.svg';
 import CallLink from './CallLink.astro';
 import { SITE } from '../config/site';
 
+interface Props {
+  /** Prefix for in-page anchors, e.g. "/" on pages other than home. */
+  base?: string;
+}
+
+const { base = '' } = Astro.props;
+
 const links = [
-  { href: '#servicios', label: 'Servicios' },
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#empresa', label: 'Empresa' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: `${base}#servicios`, label: 'Servicios' },
+  { href: `${base}#proyectos`, label: 'Proyectos' },
+  { href: `${base}#empresa`, label: 'Empresa' },
+  { href: `${base}#contacto`, label: 'Contacto' },
 ];
 ---
 
 <header class="sticky top-0 z-40 bg-melega-night/85 text-white backdrop-blur-md">
   <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-    <a href="#inicio" class="shrink-0" aria-label="Melega, ir al inicio">
+    <a href={`${base}#inicio`} class="shrink-0" aria-label="Melega, ir al inicio">
       <Logo aria-label="Melega" role="img" class="h-9 w-auto" />
     </a>
     <nav aria-label="Principal" class="hidden md:block">

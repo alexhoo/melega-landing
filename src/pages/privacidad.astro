@@ -1,0 +1,36 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { SITE } from '../config/site';
+---
+
+<Legal title="Política de privacidad" description="Cómo trata Melega, S.L. los datos personales de quienes visitan su web o la contactan.">
+  <h2>Responsable del tratamiento</h2>
+  <p>
+    {SITE.legalName}, CIF <mark data-placeholder>[CIF pendiente]</mark>, {SITE.address.street}, {SITE.address.city} ({SITE.address.region}).
+    Contacto: <mark data-placeholder>[email pendiente]</mark>.
+  </p>
+
+  <h2>Qué datos tratamos</h2>
+  <p>
+    Esta web no tiene formularios ni pide datos personales. Si nos llamas, trataremos los datos que nos facilites durante la llamada
+    únicamente para atender tu consulta y, en su caso, preparar un presupuesto.
+  </p>
+
+  <h2>Cookies y analítica</h2>
+  <p>
+    No usamos cookies. Medimos las visitas de forma agregada y anónima con Vercel Web Analytics, que no utiliza cookies ni identifica a
+    los visitantes.
+  </p>
+
+  <h2>Base legal y conservación</h2>
+  <p>
+    La base legal es la aplicación de medidas precontractuales a petición del interesado y nuestro interés legítimo en responder a sus
+    consultas. Conservamos los datos el tiempo necesario para ello y para cumplir nuestras obligaciones legales.
+  </p>
+
+  <h2>Tus derechos</h2>
+  <p>
+    Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a
+    <mark data-placeholder>[email pendiente]</mark>. También puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).
+  </p>
+</Legal>

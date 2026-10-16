@@ -1,43 +1,37 @@
-# Astro Starter Kit: Minimal
+# Melega · landing page
 
-```sh
-npm create astro@latest -- --template minimal
+Landing de una sola página para Melega, S.L. (Montajes Eléctricos Gaditanos). Objetivo: que el visitante llame al 956 547 899.
+
+- Diseño: `docs/superpowers/specs/2026-10-16-melega-landing-design.md`
+- Plan: `docs/superpowers/plans/2026-10-16-melega-landing.md`
+
+## Desarrollo
+
+Requiere Node ≥ 22.22 (`nvm use`).
+
+```bash
+npm install
+npm run dev          # http://localhost:4321
+npm test             # unitarios y de componentes
+npm run test:build   # build + tests sobre el HTML generado
+npm run test:e2e     # Playwright (móvil y escritorio)
+npm run check        # tipos
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+El contenido está en `src/data/*.ts` y los datos de contacto en `src/config/site.ts`.
 
-## 🚀 Project Structure
+## Estado: vista previa privada
 
-Inside of your Astro project, you'll see the following folders and files:
+Mientras `PUBLIC_INDEXABLE` no valga `true`, todas las páginas llevan `noindex`, `robots.txt` bloquea el rastreo y `vercel.json` añade `X-Robots-Tag: noindex`.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Lista para el lanzamiento público
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. Confirmar con el cliente los datos pendientes (§9 de la spec): plantilla, vigencia de ISO 9001/14001 y OHSAS 18001 → ISO 45001, autorizaciones, permiso para nombrar clientes, CIF/registro, email, horario, código postal y WhatsApp.
+2. Sustituir las fotos de `src/assets/stock/` por fotos reales.
+3. En Vercel: `PUBLIC_INDEXABLE=true` y `SITE_URL=https://<dominio>`.
+4. Eliminar la cabecera `X-Robots-Tag` de `vercel.json`.
+5. Conectar el dominio y añadir en `vercel.json` redirecciones 301 desde las URLs indexadas de la web antigua.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Analítica
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Vercel Web Analytics (sin cookies). Cada clic en un enlace `tel:` envía el evento `llamada` con la propiedad `ubicacion` (hero, header, mobile-bar…). Los eventos personalizados requieren el plan Pro de Vercel.
