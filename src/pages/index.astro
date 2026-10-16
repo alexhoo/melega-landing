@@ -1,12 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import MobileCallBar from '../components/MobileCallBar.astro';
 ---
 
 <Base
   title="Melega · Instalaciones eléctricas en Cádiz"
   description="Instalaciones eléctricas para industria, comercios y hogares en la provincia de Cádiz."
 >
+  <Header />
   <main>
-    <h1>Melega</h1>
+    <Hero />
   </main>
+  <MobileCallBar />
 </Base>

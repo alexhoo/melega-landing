@@ -1,0 +1,33 @@
+---
+import { Phone } from 'lucide-react';
+import { SITE } from '../config/site';
+
+interface Props {
+  phone?: 'primary' | 'secondary';
+  location: string;
+  variant?: 'solid' | 'outline' | 'bare';
+  class?: string;
+}
+
+const { phone = 'primary', location, variant = 'solid', class: className } = Astro.props;
+const { href, display } = SITE.phones[phone];
+
+const variants = {
+  solid: 'bg-melega-light text-melega-night hover:bg-[#4cc238] px-5 py-3 rounded-lg font-extrabold',
+  outline: 'border border-current px-4 py-2 rounded-lg font-bold hover:bg-white/10',
+  bare: 'font-bold underline-offset-4 hover:underline',
+};
+---
+
+<a
+  href={href}
+  data-call={location}
+  class:list={[
+    'inline-flex items-center gap-2 transition-[scale,background-color] duration-150 ease-out motion-safe:active:scale-[0.96]',
+    variants[variant],
+    className,
+  ]}
+>
+  {variant !== 'bare' && <Phone aria-hidden="true" size={18} strokeWidth={2.5} />}
+  <slot>{display}</slot>
+</a>

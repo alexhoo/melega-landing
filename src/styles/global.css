@@ -3,8 +3,8 @@
 @import "@fontsource-variable/archivo/standard-italic.css";
 
 @theme {
-  --color-melega-light: #52ae32;
-  --color-melega-dark: #116b39;
+  --color-melega-light: #3eae2c;
+  --color-melega-dark: #006938;
   --color-melega-ink: #231f20;
   --color-melega-night: #0c2a1a;
   --color-melega-deep: #071c11;
@@ -12,6 +12,17 @@
 
   --font-sans: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Staged entrance (better-ui): opacity + 4px blur + 12px rise, 300ms ease-out. */
+  --animate-enter: enter 300ms ease-out both;
+
+  @keyframes enter {
+    from {
+      opacity: 0;
+      filter: blur(4px);
+      translate: 0 12px;
+    }
+  }
 }
 
 @layer base {
@@ -21,7 +32,7 @@
   }
 
   body {
-    @apply bg-melega-night font-sans text-melega-ink antialiased;
+    @apply bg-melega-night pb-20 md:pb-0 font-sans text-melega-ink antialiased;
     -webkit-tap-highlight-color: transparent;
   }
 }

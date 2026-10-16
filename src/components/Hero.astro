@@ -1,0 +1,47 @@
+---
+import Bolt from '../assets/brand/melega-bolt.svg';
+import CallLink from './CallLink.astro';
+import { SITE } from '../config/site';
+
+const highlights = [
+  { value: '+30', label: 'años de experiencia del equipo' },
+  { value: 'ISO', label: '9001 · 14001' },
+  { value: 'BT · MT', label: 'instaladores autorizados' },
+];
+---
+
+<section id="inicio" class="relative overflow-hidden bg-melega-night text-white">
+  <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-16 md:pb-24">
+    <div>
+      <p class="motion-safe:animate-enter text-sm font-bold tracking-[0.18em] text-melega-light uppercase">
+        {SITE.tagline} · desde 2007
+      </p>
+      <h1 class="motion-safe:animate-enter mt-4 font-display text-[2.6rem] leading-[0.92] font-black tracking-[-0.03em] uppercase italic [font-stretch:115%] sm:text-6xl lg:text-7xl">
+        Energía que mueve la <span class="text-melega-light">Bahía de Cádiz</span>
+      </h1>
+      <p class="motion-safe:animate-enter mt-6 max-w-xl text-lg text-white/80 [animation-delay:100ms]">
+        Instalaciones eléctricas para industria, comercios y hogares. Del cuadro eléctrico de un astillero a las placas solares de tu casa.
+      </p>
+      <div class="motion-safe:animate-enter mt-8 flex flex-wrap items-center gap-4 [animation-delay:200ms]">
+        <CallLink location="hero" class="text-lg">Llámanos · {SITE.phones.primary.display}</CallLink>
+        <a href="#servicios" class="font-bold text-white/80 underline-offset-4 hover:text-white hover:underline">Ver servicios</a>
+      </div>
+      <dl class="motion-safe:animate-enter mt-10 grid max-w-md grid-cols-3 gap-4 [animation-delay:200ms]">
+        {highlights.map((h) => (
+          <div>
+            <dt class="sr-only">{h.label}</dt>
+            <dd class="font-display text-2xl font-black text-melega-light italic">{h.value}</dd>
+            <dd class="mt-1 text-xs text-white/70">{h.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+    <div class="relative" data-hero-media>
+      <slot name="media">
+        <div class="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-melega-dark/60 to-melega-deep md:aspect-[4/5]">
+          <Bolt aria-hidden="true" class="h-1/2 w-auto opacity-30" />
+        </div>
+      </slot>
+    </div>
+  </div>
+</section>
