@@ -1,9 +1,18 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import ClientsStrip from '../components/ClientsStrip.astro';
 import Services from '../components/Services.astro';
+import Stats from '../components/Stats.astro';
+import Projects from '../components/Projects.astro';
+import Credentials from '../components/Credentials.astro';
+import Location from '../components/Location.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
 import MobileCallBar from '../components/MobileCallBar.astro';
+import heroPhoto from '../assets/stock/hero-electricista.jpg';
 ---
 
 <Base
@@ -12,8 +21,26 @@ import MobileCallBar from '../components/MobileCallBar.astro';
 >
   <Header />
   <main>
-    <Hero />
+    <Hero>
+      <Image
+        slot="media"
+        src={heroPhoto}
+        alt="Electricista con casco revisando un cuadro eléctrico"
+        widths={[480, 800, 1200]}
+        sizes="(min-width: 768px) 45vw, 92vw"
+        loading="eager"
+        fetchpriority="high"
+        class="aspect-[4/5] w-full rounded-2xl object-cover outline-1 -outline-offset-1 outline-white/10"
+      />
+    </Hero>
+    <ClientsStrip />
     <Services />
+    <Stats />
+    <Projects />
+    <Credentials />
+    <Location />
+    <FinalCta />
   </main>
+  <Footer />
   <MobileCallBar />
 </Base>

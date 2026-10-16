@@ -1,0 +1,48 @@
+---
+import { MapPin, ArrowRight } from 'lucide-react';
+import CallLink from './CallLink.astro';
+import { SITE } from '../config/site';
+
+const { address, phones } = SITE;
+---
+
+<section id="contacto" class="bg-white py-20 md:py-28">
+  <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
+    <div>
+      <p class="text-sm font-bold tracking-[0.18em] text-melega-dark uppercase">Dónde estamos</p>
+      <h2 class="mt-3 font-display text-4xl font-black tracking-[-0.02em] text-melega-ink uppercase italic [font-stretch:110%] md:text-5xl">
+        En El Puerto, para toda Andalucía
+      </h2>
+      <p class="mt-5 text-lg text-melega-ink/70">
+        Trabajamos en toda la comunidad, sobre todo en la provincia de Cádiz. En nuestras instalaciones tenemos taller, oficinas y sala de formación.
+      </p>
+      <address class="mt-8 text-lg leading-relaxed text-melega-ink not-italic">
+        <strong class="block">{address.area}</strong>
+        {address.street}<br />
+        {address.postalCode} {address.city} ({address.region})
+      </address>
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <CallLink location="contact">{phones.primary.display}</CallLink>
+        <p class="text-melega-ink/70">
+          Móvil: <CallLink phone="secondary" location="contact-mobile" variant="bare" class="text-melega-ink" />
+        </p>
+      </div>
+    </div>
+    <a
+      href={address.mapsUrl}
+      target="_blank"
+      rel="noopener"
+      class="group relative grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-melega-night text-white [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:32px_32px]"
+    >
+      <span class="flex flex-col items-center gap-3 text-center">
+        <span class="grid size-16 place-items-center rounded-full bg-melega-light text-melega-night shadow-[0_0_0_10px_rgb(62_174_44/0.2)]">
+          <MapPin aria-hidden="true" size={30} strokeWidth={2.25} />
+        </span>
+        <span class="font-display text-xl font-extrabold italic">{address.city}</span>
+        <span class="inline-flex items-center gap-1.5 font-bold text-melega-light">
+          Cómo llegar <ArrowRight aria-hidden="true" size={18} strokeWidth={2.5} class="transition-[translate] duration-150 group-hover:translate-x-0.5" />
+        </span>
+      </span>
+    </a>
+  </div>
+</section>

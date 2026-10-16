@@ -1,0 +1,20 @@
+---
+import { clients } from '../data/clients';
+---
+
+<section id="clientes" class="bg-melega-deep py-10 text-white" aria-labelledby="clientes-title">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <h2 id="clientes-title" class="text-center text-xs font-bold tracking-[0.2em] text-white/50 uppercase">
+      Han confiado en nosotros
+    </h2>
+    <ul class="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      {
+        clients.map((name) => (
+          <li class="font-display text-base font-extrabold tracking-wide text-white/70 uppercase italic [font-stretch:110%] sm:text-lg">
+            {name}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
