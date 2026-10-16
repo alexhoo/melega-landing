@@ -69,7 +69,7 @@ export default function ServiceTabs({ groups, defaultGroup = 'empresa' }: Props)
       <div
         role="tablist"
         aria-label="Tipo de cliente"
-        className="inline-flex flex-wrap gap-1 rounded-full bg-white p-1 shadow-[0_0_0_1px_rgb(0_0_0/0.06),0_1px_2px_rgb(0_0_0/0.06)]"
+        className="inline-flex flex-wrap gap-1 rounded-full border border-transparent bg-white p-1 shadow-[0_0_0_1px_rgb(0_0_0/0.06),0_1px_2px_rgb(0_0_0/0.06)]"
       >
         {audiences.map((audience) => {
           const selected = audience === active;
