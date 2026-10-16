@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -21,5 +22,12 @@ const { title, description, localBusiness } = Astro.props;
   </head>
   <body>
     <slot />
+    <Analytics />
+    <script>
+      import { track } from '@vercel/analytics';
+      import { installCallTracking } from '../lib/track-calls';
+
+      installCallTracking(document, track);
+    </script>
   </body>
 </html>
