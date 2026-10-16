@@ -1,7 +1,7 @@
 # Landing page de Melega: diseño
 
 Fecha: 2026-10-16
-Fuentes (copiadas al repo): `docs/source/LOGO.pdf` (logo nuevo) y `docs/source/CURRICULUM MELEGA S.L..pdf` (dossier de empresa). El dossier es antiguo: su mapa es de 2015 y cita OHSAS 18001, norma retirada en 2021. Hay que tratar sus datos como algo que el cliente debe confirmar (ver §9).
+Fuentes (copiadas al repo): `docs/source/LOGO.pdf` (logo nuevo) y `docs/source/CURRICULUM MELEGA S.L..pdf` (dossier de empresa; solo en local, no versionado por contener datos internos). El dossier es antiguo: su mapa es de 2015 y cita OHSAS 18001, norma retirada en 2021. Hay que tratar sus datos como algo que el cliente debe confirmar (ver §9).
 
 ## 1. Intención y por qué
 

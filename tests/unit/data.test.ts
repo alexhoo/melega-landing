@@ -4,6 +4,7 @@ import { projects } from '../../src/data/projects';
 import { stats } from '../../src/data/stats';
 import { credentials } from '../../src/data/credentials';
 import { clients } from '../../src/data/clients';
+import { containsHashedName } from '../forbidden-names';
 
 describe('content data', () => {
   it('has at least six services per audience', () => {
@@ -33,8 +34,6 @@ describe('content data', () => {
 
   it('never includes org-chart names', () => {
     const all = JSON.stringify({ services, projects, stats, credentials, clients });
-    for (const name of ['[nombre del organigrama]', '[nombre del organigrama]', '[nombre del organigrama]', '[nombre del organigrama]']) {
-      expect(all).not.toContain(name);
-    }
+    expect(containsHashedName(all)).toBe(false);
   });
 });

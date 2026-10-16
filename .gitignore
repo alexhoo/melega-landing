@@ -7,3 +7,6 @@ test-results
 playwright-report
 .DS_Store
 .env*
+
+# Client dossier: internal data, never commit
+docs/source/CURRICULUM*.pdf

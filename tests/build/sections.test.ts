@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { loadPage } from './html';
+import { containsHashedName } from '../forbidden-names';
 
 const PRIMARY = 'tel:+34956547899';
 const SECONDARY = 'tel:+34661606065';
@@ -52,8 +53,7 @@ describe('page sections', () => {
   });
 
   it('no org-chart names', () => {
-    expect(page.text).not.toContain('[nombre del organigrama]');
-    expect(page.text).not.toContain('[nombre del organigrama]');
+    expect(containsHashedName(page.text)).toBe(false);
   });
 
   it('footer links to legal pages', () => {
