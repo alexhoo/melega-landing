@@ -4,7 +4,7 @@ import CallLink from './CallLink.astro';
 import { SITE } from '../config/site';
 
 const highlights = [
-  { value: '+30', label: 'años de experiencia del equipo' },
+  { value: '30', prefix: '+', count: 30, label: 'años de experiencia del equipo' },
   { value: 'ISO', label: '9001 · 14001' },
   { value: 'BT · MT', label: 'instaladores autorizados' },
 ];
@@ -12,7 +12,7 @@ const highlights = [
 
 <section id="inicio" class="relative overflow-hidden bg-melega-night text-white">
   <div class="mx-auto grid max-w-6xl items-center gap-10 px-4 pt-10 pb-16 sm:px-6 md:grid-cols-[1.15fr_1fr] md:pt-16 md:pb-24">
-    <div>
+    <div data-hero-copy>
       <p class="motion-safe:animate-enter text-sm font-bold tracking-[0.18em] text-melega-light uppercase">
         {SITE.tagline} · desde 2007
       </p>
@@ -30,18 +30,32 @@ const highlights = [
         {highlights.map((h) => (
           <div>
             <dt class="sr-only">{h.label}</dt>
-            <dd class="font-display text-2xl font-black text-melega-light italic">{h.value}</dd>
+            <dd class="font-display text-2xl font-black text-melega-light italic tabular-nums">
+              {h.count ? <>{h.prefix}<span data-count-to={h.count}>{h.value}</span></> : h.value}
+            </dd>
             <dd class="mt-1 text-xs text-white/70">{h.label}</dd>
           </div>
         ))}
       </dl>
     </div>
-    <div class="relative" data-hero-media>
-      <slot name="media">
-        <div class="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-melega-dark/60 to-melega-deep md:aspect-[4/5]">
-          <Bolt aria-hidden="true" class="h-1/2 w-auto opacity-30" />
-        </div>
-      </slot>
+    <div class="relative">
+      <div data-hero-glow-drift aria-hidden="true" class="absolute -inset-4">
+        <div data-hero-glow class="size-full rounded-[2.5rem] bg-melega-light/40 opacity-40 blur-3xl"></div>
+      </div>
+      <div class="relative overflow-hidden rounded-2xl" data-hero-media>
+        <slot name="media">
+          <div class="relative grid aspect-[4/5] place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-melega-dark/60 to-melega-deep md:aspect-[4/5]">
+            <Bolt aria-hidden="true" class="h-1/2 w-auto opacity-30" />
+          </div>
+        </slot>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { animate, scroll } from 'motion';
+  import { installHeroMotion } from '../lib/hero-motion';
+
+  installHeroMotion(document, { animate, scroll });
+</script>

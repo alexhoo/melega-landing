@@ -33,3 +33,10 @@ const links = [
     </CallLink>
   </div>
 </header>
+
+<script>
+  import { animate, scroll } from 'motion';
+  import { installHeaderElevation } from '../lib/header-motion';
+
+  installHeaderElevation(document, { animate, scroll });
+</script>
