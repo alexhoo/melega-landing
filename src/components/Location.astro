@@ -8,7 +8,7 @@ const { address, phones } = SITE;
 
 <section id="contacto" class="bg-white py-20 md:py-28">
   <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
-    <div>
+    <div data-reveal-group>
       <p class="text-sm font-bold tracking-[0.18em] text-melega-dark uppercase">Dónde estamos</p>
       <h2 class="mt-3 font-display text-[1.85rem] leading-none font-black sm:text-4xl tracking-[-0.02em] text-melega-ink uppercase italic [font-stretch:110%] md:text-5xl">
         En El Puerto, para toda Andalucía
@@ -29,13 +29,18 @@ const { address, phones } = SITE;
       </div>
     </div>
     <a
+      data-reveal
       href={address.mapsUrl}
       target="_blank"
       rel="noopener"
       class="group relative grid aspect-[4/3] place-items-center overflow-hidden rounded-2xl bg-melega-night text-white [background-image:linear-gradient(rgb(255_255_255/0.06)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.06)_1px,transparent_1px)] [background-size:32px_32px]"
     >
       <span class="flex flex-col items-center gap-3 text-center">
-        <span class="grid size-16 place-items-center rounded-full bg-melega-light text-melega-night shadow-[0_0_0_10px_rgb(62_174_44/0.2)]">
+        <span
+          data-pulse-ring
+          data-pulse-from="0 0 0 10px rgb(62 174 44 / 0.2)"
+          data-pulse-to="0 0 0 24px rgb(62 174 44 / 0)"
+          class="grid size-16 place-items-center rounded-full bg-melega-light text-melega-night shadow-[0_0_0_10px_rgb(62_174_44/0.2)]">
           <MapPin aria-hidden="true" size={30} strokeWidth={2.25} />
         </span>
         <span class="font-display text-xl font-extrabold italic">{address.city}</span>

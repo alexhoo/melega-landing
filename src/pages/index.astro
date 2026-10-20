@@ -45,3 +45,10 @@ import heroPhoto from '../assets/stock/hero-electricista.jpg';
   <Footer />
   <MobileCallBar />
 </Base>
+
+<script>
+  import { animate, inView } from 'motion';
+  import { installPageMotion } from '../lib/page-motion';
+
+  installPageMotion(document, { animate, inView });
+</script>
